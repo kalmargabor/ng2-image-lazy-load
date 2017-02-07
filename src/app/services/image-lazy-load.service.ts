@@ -12,6 +12,7 @@ export interface IImageLazyLoadConfig {
 @Injectable()
 export class ImageLazyLoaderService {
   public imageCache: any = {};
+  public initialImageResponse = {};
   // default config
   private _config: IImageLazyLoadConfig = {
     loadingClass: 'loading',
@@ -98,8 +99,10 @@ export class ImageLazyLoaderService {
       this.http.get(url, ro)
         .subscribe(res => {
           this.imageCache[url] = true;
+          this.initialImageResponse[url] = res._body;
           resolve(true);
-        });
+        })
+          .share();
     });
   }
 
