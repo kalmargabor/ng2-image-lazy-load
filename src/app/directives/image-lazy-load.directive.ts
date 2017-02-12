@@ -119,7 +119,7 @@ export class ImageLazyLoadItemDirective {
       if (this.tagName === 'IMG') {
         this.renderer.setElementAttribute(this.el.nativeElement, 'src', this.lazyLoader.initialImageResponse[this.imageLazyLoadItem]);
       } else {
-        this.renderer.setElementAttribute(this.el.nativeElement, 'style', `background-image:url('${this.imageLazyLoadItem}')`);
+        this.renderer.setElementAttribute(this.el.nativeElement, 'style', `background-image:url('${this.lazyLoader.initialImageResponse[this.imageLazyLoadItem]}')`);
       }
       this.loading = false;
       this.toggleLoaded(true);
